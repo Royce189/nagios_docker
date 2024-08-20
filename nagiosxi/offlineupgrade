@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+# Import gpg key
+if [ ! -f /etc/pki/rpm-gpg/GPG-KEY-NAGIOS-V3 ]; then
+	/bin/cp -f GPG-KEY-NAGIOS-V3 /etc/pki/rpm-gpg/GPG-KEY-NAGIOS-V3
+	rpm --import GPG-KEY-NAGIOS-V3
+fi
+
+# Removed the individual localinstalls as they will all be done anyways on line 12 -AC
+
+# Do local install of packages
+yum -y --nogpgcheck localinstall *.rpm

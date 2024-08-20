@@ -1,0 +1,22 @@
+#!/bin/sh -e
+
+# Import gpg key
+if [ ! -f /etc/pki/rpm-gpg/GPG-KEY-NAGIOS-V3 ]; then
+	/bin/cp -f GPG-KEY-NAGIOS-V3 /etc/pki/rpm-gpg/GPG-KEY-NAGIOS-V3
+	rpm --import GPG-KEY-NAGIOS-V3
+fi
+
+# Do local install of packages
+yum -y --nogpgcheck localinstall *.rpm
+
+. /usr/local/nagiosxi/etc/xi-sys.cfg
+
+existing=$(mysql -u root -p$mysqlpass -se "SELECT COUNT(*) FROM nagiosxi.xi_options WHERE name = 'reports_exporting';")
+
+if [ "$existing" -eq "0" ]; then
+  query="INSERT INTO nagiosxi.xi_options (name, value) VALUES ('reports_exporting', '1');"
+else
+  query="UPDATE nagiosxi.xi_options SET value='1' WHERE name='reports_exporting';"
+fi
+
+mysql -u root -p$mysqlpass -e "$query"

@@ -1,0 +1,4 @@
+2.0.2 - 04/26/2024
+==================
+- Initialized changelog
+- Removed unuvailable videos [GL:XI#948] - GW

@@ -1,0 +1,13 @@
+Package: *
+Pin: origin "deb.debian.org"
+Pin-Priority: 300
+
+
+Package: chromium*
+Pin: origin "deb.debian.org"
+Pin-Priority: 700
+
+
+Package: libwebpmux3
+Pin: origin "deb.debian.org"
+Pin-Priority: 700

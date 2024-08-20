@@ -1,0 +1,50 @@
+#!/bin/bash -e
+
+. ../../xi-sys.cfg
+
+# You're trying to get me to say that I think snap sucks!
+# https://github.com/snapcore/snapd/blob/68fe7eb9f7496ec54f2b3373a5c8d1993b9eb822/cmd/snap-confine/user-support.c#L42
+if [ "$distro" == "Ubuntu" ]; then
+    if [ "$dist" == "ubuntu20" ]; then
+        mkdir -p /etc/apt/keyrings/
+        echo "deb [signed-by=/etc/apt/keyrings/debian-bullseye-security.gpg]  http://deb.debian.org/debian-security bullseye-security main" >> /etc/apt/sources.list.d/debian.list
+        wget -O- https://ftp-master.debian.org/keys/archive-key-11-security.asc | gpg --dearmor > debian-bullseye-security.gpg
+        mv debian-bullseye-security.gpg /etc/apt/keyrings/
+        chmod 644 /etc/apt/keyrings/debian-bullseye-security.gpg
+
+        echo "deb [signed-by=/etc/apt/keyrings/debian-bullseye.gpg] http://deb.debian.org/debian bullseye main" >> /etc/apt/sources.list.d/debian.list
+        wget -O- https://ftp-master.debian.org/keys/archive-key-11.asc | gpg --dearmor > debian-bullseye.gpg
+        mv debian-bullseye.gpg /etc/apt/keyrings/
+        chmod 644 /etc/apt/keyrings/debian-bullseye.gpg
+
+        cp -f ./chromium_20.pref /etc/apt/preferences.d/chromium.pref
+
+        apt -y update
+        apt -y install chromium
+        ln -s $(which chromium) /bin/chromium-browser
+
+    elif [ "$dist" == "ubuntu22" ]; then
+        mkdir -p /etc/apt/keyrings/
+        echo "deb [signed-by=/etc/apt/trusted.gpg.d/debian-bookworm-security.gpg] http://deb.debian.org/debian-security bookworm-security main" >> /etc/apt/sources.list.d/debian.list
+        wget -O- https://ftp-master.debian.org/keys/archive-key-12-security.asc | gpg --dearmor > debian-bookworm-security.gpg
+        mv debian-bookworm-security.gpg /etc/apt/trusted.gpg.d/
+        chmod 644 /etc/apt/trusted.gpg.d/debian-bookworm-security.gpg
+
+        echo "deb [signed-by=/etc/apt/trusted.gpg.d/debian-bookworm.gpg] http://deb.debian.org/debian bookworm main" >> /etc/apt/sources.list.d/debian.list
+        wget -O- https://ftp-master.debian.org/keys/archive-key-12.asc | gpg --dearmor > debian-bookworm.gpg
+        mv debian-bookworm.gpg /etc/apt/trusted.gpg.d/
+        chmod 644 /etc/apt/trusted.gpg.d/debian-bookworm.gpg
+
+        cp -f ./chromium_22.pref /etc/apt/preferences.d/chromium.pref
+
+        apt -y update
+        apt -y install chromium
+        ln -s $(which chromium) /bin/chromium-browser
+    fi
+elif [ "$distro" == "Debian" ]; then
+    apt -y install chromium
+    ln -s $(which chromium) /bin/chromium-browser
+else
+    yum -y install chromium chromium-headless
+fi
+echo "INSTALL: Chromium installed OK."

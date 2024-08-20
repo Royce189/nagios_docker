@@ -1,0 +1,33 @@
+Package: *
+Pin: origin "deb.debian.org"
+Pin-Priority: 300
+
+
+Package: chromium*
+Pin: origin "deb.debian.org"
+Pin-Priority: 700
+
+
+Package: libsnappy1v5
+Pin: origin "deb.debian.org"
+Pin-Priority: 700
+
+
+Package: libwebp7
+Pin: origin "deb.debian.org"
+Pin-Priority: 700
+
+
+Package: libwebpdemux2
+Pin: origin "deb.debian.org"
+Pin-Priority: 700
+
+
+Package: libwebpmux3
+Pin: origin "deb.debian.org"
+Pin-Priority: 700
+
+Package: libharfbuzz0b
+Pin: origin "deb.debian.org"
+Pin-Priority: 700
+

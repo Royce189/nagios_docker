@@ -1,0 +1,37 @@
+{
+  "index.html": {
+    "assets": [
+      "assets/advancedConfig-Wine9A7s.png",
+      "assets/autoDiscovery-AExj-7AS.png",
+      "assets/manageAccountSettings-tx7Um9OF.png",
+      "assets/monitoringAgents-1Gs1ZGBM.png",
+      "assets/WizardDrop-Yd5-tVQr.png"
+    ],
+    "css": [
+      "assets/app-b6ngUf6I.css"
+    ],
+    "file": "assets/app-SxotUUYi.js",
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "src/assets/images/config/WizardDrop.png": {
+    "file": "assets/WizardDrop-Yd5-tVQr.png",
+    "src": "src/assets/images/config/WizardDrop.png"
+  },
+  "src/assets/images/config/advancedConfig.png": {
+    "file": "assets/advancedConfig-Wine9A7s.png",
+    "src": "src/assets/images/config/advancedConfig.png"
+  },
+  "src/assets/images/config/autoDiscovery.png": {
+    "file": "assets/autoDiscovery-AExj-7AS.png",
+    "src": "src/assets/images/config/autoDiscovery.png"
+  },
+  "src/assets/images/config/manageAccountSettings.png": {
+    "file": "assets/manageAccountSettings-tx7Um9OF.png",
+    "src": "src/assets/images/config/manageAccountSettings.png"
+  },
+  "src/assets/images/config/monitoringAgents.png": {
+    "file": "assets/monitoringAgents-1Gs1ZGBM.png",
+    "src": "src/assets/images/config/monitoringAgents.png"
+  }
+}

@@ -1,0 +1,4 @@
+1.0.0 - 05/28/2024
+==================
+- Initialized changelog and version number - GW
+- Updated required version - GW
